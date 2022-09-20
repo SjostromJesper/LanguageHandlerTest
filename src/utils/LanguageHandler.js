@@ -26,8 +26,9 @@ export async function t(langFile) {
 
     const handler = {
         get: (object, property) => {
-            return property in object ? object[property] : `${property} does not exist`
+            return property in object ? object[property] : `[${langFile}.${property}]`
         }
     }
+
     return new Proxy(currentLang, handler)
 }
